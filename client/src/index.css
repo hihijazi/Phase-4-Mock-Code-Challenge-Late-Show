@@ -1,92 +1,43 @@
 body {
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  color: white;
-  background: #2d2332;
   margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(71, 218, 255);
+  color: #25176d;
+}
+
+a {
+  color: #25176d;
 }
 
 header {
-  background-color: #7224cc;
-  padding: 10px;
-  display: flex;
+  padding: 8px;
+  background-color: #25176d;
+  text-align: center;
 }
 
-main {
-  padding: 6px 64px;
+header h1 {
+  color: #fff8e7;
+  font-family: "Righteous", sans-serif;
+  font-size: 32px;
+}
+
+.container {
   max-width: 800px;
   margin: 0 auto;
 }
 
-header h1 {
-  margin: 0.5rem;
-  font-family: "Baloo Chettan 2", cursive;
-  color: #fff;
-  text-transform: uppercase;
-  text-align: center;
+.card {
+  background-color: #fff8e7;
+  padding: 16px;
+  margin: 16px 0;
+  box-shadow: 8px 8px #25176d;
 }
 
-header a {
-  width: 100%;
-  text-decoration: none;
-}
-
-h2 {
-  font-family: "Baloo Chettan 2", cursive;
-  color: #fff;
-  text-transform: uppercase;
-  font-size: 32px;
-}
-
-ul {
-  padding: 0;
-  list-style: none;
-}
-
-li {
-  padding: 12px;
-  background-color: #e1c7ff;
-  border-bottom: 1px solid #7224cc;
-  display: grid;
-  grid-template-columns: 40% auto auto;
-}
-
-li:last-child {
-  border-bottom: none;
-}
-
-li a,
-li span {
-  font-weight: bold;
-  color: #7224cc;
-  text-decoration: none;
-}
-
-li:hover {
-  background-color: #eee1fc;
-}
-
-select,
-input,
-textarea {
-  display: block;
-  margin: 10px 0;
-  padding: 6px;
-  font-size: 16px;
-}
-
-button {
-  padding: 4px 6px;
-  text-transform: uppercase;
-  border: none;
-  background-color: #7224cc;
-  color: #fff;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-button[type="submit"] {
-  padding: 10px 16px;
-  font-size: 18px;
-  margin: 24px 0 0 0;
+form {
+  display: flex;
+  gap: 8px;
 }

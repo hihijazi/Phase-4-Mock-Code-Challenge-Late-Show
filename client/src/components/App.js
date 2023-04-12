@@ -1,23 +1,21 @@
-import { Switch, Route } from "react-router-dom";
-import Header from "./Header";
-import Vendor from "./Vendor";
+import { Route, Switch } from "react-router";
 import Home from "./Home";
+import Navbar from "./Navbar";
+import Episode from "./Episode";
 
 function App() {
   return (
-    <div>
-      <Header />
-      <main>
-        <Switch>
-          <Route exact path="/vendors/:id">
-            <Vendor />
-          </Route>
-          <Route exact path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </main>
-    </div>
+    <>
+      <Navbar />
+      <Switch>
+        <Route exact path="/episodes/:id">
+          <Episode />
+        </Route>
+        <Route exact path="/">
+          <Home />
+        </Route>
+      </Switch>
+    </>
   );
 }
 
