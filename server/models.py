@@ -17,15 +17,60 @@ class Episode(db.Model, SerializerMixin):
     __tablename__ = 'episodes'
 
     id = db.Column(db.Integer, primary_key=True)
+    air_date = db.Column(db.String)  # Assuming the air date is stored as a string
+    episode_number = db.Column(db.Integer)
+
+    # Add relationship
+    appearances = db.relationship("Appearance", back_populates="episode")
+
+    # Add serialization
+    serialize_rules = ("-appearances.episode",)
+
+    def __repr__(self):
+        return f"<Episode {self.id} : {self.air_date}, {self.episode_number}>"
+
+
 
 class Guest(db.Model, SerializerMixin):
     __tablename__ = 'guests'
 
     id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
+
+    # Add relationship
+    appearance = db.relationship("Appearance", back_populates="guest")  
+  
+    # Add serialization
+    serialize_rules = ("-appearance.guest",)
+
+    def __repr__(self):
+        return f"<Guest {self.id} : {self.name}>"
 
 class Appearance(db.Model, SerializerMixin):
     __tablename__ = 'appearances'
 
     id = db.Column(db.Integer, primary_key=True)
+    episode_id = db.Column(db.Integer, db.ForeignKey('episodes.id'))    
+    guest_id = db.Column(db.Integer, db.ForeignKey('guests.id'))    
+
+    # Add relationships
+    episode = db.relationship("Episode", back_populates="appearances")  
+    guest = db.relationship("Guest", back_populates="appearance")   
+
+    #Add serialization
+    serialize_rules = ("-guest.appearance",)
+
+    # Add validation
+    @validates('rating')
+    def validate_rating(self, key, value):
+        if value is None:
+            raise ValueError('Must have a rating between 1 and 5 ')
+        return value
+
+    def __repr__(self): 
+        return f"<Appearance {self.id} : {self.episode_id} : {self.guest_id}>"  
+    
+
+
 
 # add any models you may need. 
