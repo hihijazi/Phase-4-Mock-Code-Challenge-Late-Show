@@ -41,7 +41,7 @@ def get_guests():
     guests = Guest.query.all()
     return make_response([guest.to_dict() for guest in guests], 200)
 
-@app.route('/apperances', methods = ['POST'])
+@app.route('/appearances', methods = ['POST'])
 def new_appearance():
     try:
         new_appearance = Appearance(
